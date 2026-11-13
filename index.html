@@ -1,1 +1,532 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaenaya's Little Universe ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --navy: #090d20;
+  --lavender: #c9b8ed;
+  --pink: #edc9df;
+  --white: #f6efff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family:'DM Sans',sans-serif;
+  overflow-x:hidden;
+}
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    radial-gradient(ellipse at 15% 20%,#29234d 0%,transparent 45%),
+    radial-gradient(ellipse at 85% 70%,#38203e 0%,transparent 40%),
+    #090d20;
+}
+
+.stars {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%,white,transparent),
+    radial-gradient(1px 1px at 70% 60%,white,transparent),
+    radial-gradient(2px 2px at 40% 80%,#d9c6ff,transparent),
+    radial-gradient(1px 1px at 90% 15%,white,transparent);
+  background-size:250px 250px;
+  opacity:.65;
+}
+
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(15px);
+  background:#090d207a;
+  z-index:10;
+}
+
+.logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;
+  color:var(--pink);
+}
+
+nav a {
+  color:#e6d9f3;
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:1px;
+}
+
+.hero {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:100px 20px;
+}
+
+.planet {
+  font-size:75px;
+  margin-bottom:25px;
+  filter:drop-shadow(0 0 25px #b9a0ed);
+  animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform:translateY(-15px); }
+}
+
+.eyebrow {
+  color:var(--lavender);
+  letter-spacing:4px;
+  font-size:10px;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+h1,h2,h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;
+}
+
+.hero h1 {
+  font-size:clamp(43px,9vw,78px);
+  line-height:1.05;
+  margin-bottom:20px;
+}
+
+.hero h1 span { color:var(--pink); }
+
+.hero p {
+  color:#c4b8d6;
+  font-size:13px;
+  line-height:2;
+  max-width:440px;
+}
+
+.btn {
+  display:inline-block;
+  margin-top:35px;
+  padding:13px 28px;
+  border:1px solid #bba6d5;
+  border-radius:30px;
+  color:white;
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:2px;
+  transition:.3s;
+}
+
+.btn:hover {
+  background:#bba6d5;
+  color:#090d20;
+}
+
+section {
+  padding:100px 9%;
+  max-width:1050px;
+  margin:auto;
+}
+
+.section-label {
+  color:var(--lavender);
+  font-size:10px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:15px;
+}
+
+section h2 {
+  font-size:clamp(34px,6vw,52px);
+  margin-bottom:25px;
+}
+
+.content {
+  color:#cfc5dd;
+  font-size:14px;
+  line-height:2;
+  max-width:680px;
+}
+
+.card-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+  margin-top:30px;
+}
+
+.card {
+  background:#ffffff09;
+  border:1px solid #ffffff17;
+  border-radius:16px;
+  padding:25px;
+  transition:.3s;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+  border-color:#bba6d5;
+}
+
+.card .symbol {
+  font-size:27px;
+  margin-bottom:15px;
+}
+
+.card h3 {
+  color:var(--pink);
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+.card p {
+  color:#cfc5dd;
+  font-size:12px;
+  line-height:1.9;
+}
+
+.quote {
+  border-left:2px solid var(--pink);
+  padding:15px 22px;
+  margin-top:30px;
+  color:#ead8f2;
+  font-family:'Cormorant Garamond',serif;
+  font-size:25px;
+  font-style:italic;
+}
+
+.timeline {
+  border-left:1px solid #9b86bd;
+  margin:35px 0 0 8px;
+  padding-left:28px;
+}
+
+.memory {
+  margin-bottom:35px;
+  position:relative;
+}
+
+.memory::before {
+  content:"";
+  position:absolute;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--pink);
+  left:-33px;
+  top:8px;
+  box-shadow:0 0 12px var(--pink);
+}
+
+.memory h3 {
+  color:var(--pink);
+  font-size:23px;
+  margin-bottom:8px;
+}
+
+.memory p {
+  color:#cfc5dd;
+  font-size:13px;
+  line-height:1.9;
+}
+
+footer {
+  text-align:center;
+  padding:65px 20px;
+  color:#cfc5dd;
+  font-size:12px;
+  line-height:2;
+}
+
+footer span { color:var(--pink); }
+
+@media(max-width:600px) {
+  nav { padding:15px 6%; }
+  section { padding:75px 7%; }
+}
+</style>
+</head>
+
+<body>
+<div class="stars"></div>
+
+<nav>
+  <div class="logo">kaenaya ♡</div>
+  <a href="#home">little universe ✦</a>
+</nav>
+
+<header class="hero" id="home">
+  <div class="planet">🪐</div>
+  <div class="eyebrow">a universe made just for you</div>
+  <h1>Kaenaya's<br><span>Little Universe</span></h1>
+  <p>
+    somewhere among all the stars and galaxies,
+    there's a little universe that belongs only to you.
+  </p>
+  <a href="#welcome" class="btn">ENTER YOUR UNIVERSE ♡</a>
+</header>
+
+<section id="welcome">
+  <div class="section-label">01 — welcome</div>
+  <h2>Dear, Kaenaya.</h2>
+  <div class="content">
+    Welcome to your little universe.
+
+    <br><br>
+    I made this little corner of the internet for you.
+    A place to keep your little things, your favorite
+    things, your dreams, and the memories we've made.
+
+    <br><br>
+    You don't have to do anything here.
+    Just be yourself, and let this little universe
+    remind you how special you are.
+  </div>
+  <div class="quote">
+    "If home had a name, I think it would be yours."
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-label">02 — about you</div>
+  <h2>The girl behind the stars.</h2>
+  <div class="content">
+    Perfect, mature, pretty.
+    Three words that come to mind whenever I think about you.
+
+    <br><br>
+    You're someone who can turn the smallest story
+    into something worth listening to.
+    You notice little things, you care deeply,
+    and you have your own beautiful way of showing love.
+
+    <br><br>
+    You're manja, clingy, and sometimes a little
+    mischievous. And honestly, I wouldn't change that.
+  </div>
+</section>
+
+<section id="favorites">
+  <div class="section-label">03 — your favorites</div>
+  <h2>Your little things.</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="symbol">🪐</div>
+      <h3>Saturn</h3>
+      <p>Your favorite planet. A little reminder that there's beauty in every corner of the universe.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">🌷</div>
+      <h3>Lily & Sunflower</h3>
+      <p>Flowers that remind me of you. Pretty in their own different ways.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">🎧</div>
+      <h3>Your music</h3>
+      <p>Beabadoobee and ALD1. A little soundtrack to your world.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">🍫</div>
+      <h3>Sweet things</h3>
+      <p>Chocolate, cookies, and all the little treats you love.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">🥢</div>
+      <h3>Dimsum Mentai</h3>
+      <p>One of your favorite foods. Of course, this deserves a place here.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">🤍</div>
+      <h3>Your little world</h3>
+      <p>All the colors, aesthetics, and little things that make you you.</p>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="section-label">04 — our story</div>
+  <h2>How our universe began.</h2>
+  <div class="content">
+    Out of all the people in this world,
+    somehow our paths crossed.
+    And I'm glad they did.
+  </div>
+  <div class="timeline">
+    <div class="memory">
+      <h3>The beginning</h3>
+      <p>When two people slowly became a little more important to each other.</p>
+    </div>
+    <div class="memory">
+      <h3>The confession</h3>
+      <p>The moment I finally told you what my heart had been keeping.</p>
+    </div>
+    <div class="memory">
+      <h3>Your first kiss</h3>
+      <p>A little moment that became a special part of our story.</p>
+    </div>
+  </div>
+</section>
+
+<section id="memories">
+  <div class="section-label">05 — little memories</div>
+  <h2>Moments I keep.</h2>
+  <div class="card-grid">
+    <div class="card">
+      <div class="symbol">💐</div>
+      <h3>Artificial flowers</h3>
+      <p>A little surprise for you on that morning.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">🏡</div>
+      <h3>Visiting you</h3>
+      <p>One of those moments when I got to see you in your own little world.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">☁️</div>
+      <h3>Our little dates</h3>
+      <p>Time spent together, making ordinary days feel special.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">😭</div>
+      <h3>Our silly moments</h3>
+      <p>The random jokes, teasing, and little nonsense that only we understand.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reminders">
+  <div class="section-label">06 — little reminders</div>
+  <h2>Things I hope you remember.</h2>
+  <div class="content">
+    You are beautiful, even on days when you don't see it.
+
+    <br><br>
+    You deserve to be listened to.
+    Your stories, even the smallest details,
+    are worth hearing.
+
+    <br><br>
+    You don't have to pretend to be someone else.
+    You can simply be yourself.
+
+    <br><br>
+    And please remember, you don't have to
+    face everything alone.
+  </div>
+  <div class="quote">
+    "I hope you see yourself with the same kindness
+    that I see in you."
+  </div>
+</section>
+
+<section id="bucket">
+  <div class="section-label">07 — our bucket list</div>
+  <h2>Somewhere, everywhere.</h2>
+  <div class="content">
+    One day, I hope we get to see the world together.
+
+    <br><br>
+    No fixed destination.
+    No rush.
+    Just us, discovering places we've only ever
+    dreamed of seeing.
+
+    <br><br>
+    The world is big, and there's so much
+    waiting for us to discover.
+  </div>
+  <div class="quote">
+    "Around the world, as long as it's with you."
+  </div>
+</section>
+
+<section id="songs">
+  <div class="section-label">08 — our soundtrack</div>
+  <h2>A little melody for you.</h2>
+  <div class="content">
+    Some songs remind me of certain people.
+    And some songs make me think of you.
+
+    <br><br>
+    Beabadoobee, ALD1, and all the little melodies
+    that make your world yours.
+
+    <br><br>
+    This is your little corner of music.
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <div class="symbol">🎵</div>
+      <h3>Beabadoobee</h3>
+      <p>A little part of your soundtrack.</p>
+    </div>
+    <div class="card">
+      <div class="symbol">🎶</div>
+      <h3>ALD1</h3>
+      <p>Another little piece of your world.</p>
+    </div>
+  </div>
+</section>
+
+<section id="note">
+  <div class="section-label">09 — one last thing</div>
+  <h2>To my favorite person.</h2>
+  <div class="content">
+    I don't know how many words it would take
+    to explain everything I feel for you.
+
+    <br><br>
+    But I hope this little universe gives you
+    a glimpse of it.
+
+    <br><br>
+    I notice the little things about you.
+    I love listening to your stories.
+    I love your attention, your words,
+    your silly side, and the way you are.
+
+    <br><br>
+    I wish you knew how much I love you.
+    More than I could ever properly explain.
+
+    <br><br>
+    Thank you for being Kaenaya.
+  </div>
+  <div class="quote">
+    "I hope this little universe reminds you
+    that you were loved, deeply and wholeheartedly."
+  </div>
+</section>
+
+<footer>
+  made with love, just for you.<br>
+  <span>for kaenaya, always ♡</span><br><br>
+  ✦ somewhere in this universe, you are my favorite star ✦
+</footer>
+
+</body>
+</html>
+
